@@ -26,7 +26,7 @@ public class MachineService {
     public void sendMachineToRabbit(Machine machine) {
         try {
             String json = new ObjectMapper().writeValueAsString(machine);
-            rabbitTemplate.convertAndSend(MachineAMQPConfig.EXCHANGE_NAME, "", json);
+            rabbitTemplate.convertAndSend(MachineAMQPConfig.EXCHANGE_NAME, "", machine);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
